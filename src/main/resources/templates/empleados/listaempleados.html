@@ -40,13 +40,11 @@
 
             <div id="content">
                 <main>
-                    <img th:src="@{/static/travel_trip_logo.png}" width="80" height="80" class="center" alt="20" loading="lazy">
 
 
-                    <!-- Contenido -->
 
-                    <!--<div class="page-header text-center">
-                        <h1>Lista de Hospitales</h1>
+                    <div class="page-header text-center">
+                        <h1>Lista de Empleados</h1>
                     </div>
                     <div class="container-fluid">
 
@@ -56,20 +54,23 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nombre</th>
-                                    <th>Dirección</th>
-                                    <th>Telefóno</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Apellido</th>
+                                    <th>Puesto</th>
+                                    <th>Departamento</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="hosp,indice:${listaHospitales}">
+                                <tr th:each="emp,indice:${listaempleados}">
                                     <td th:text="${indice.index + 1}"></td>
-                                    <td th:text="${hosp.nombre}"></td>
-                                    <td th:text="${hosp.direccion}"></td>
-                                    <td th:text="${hosp.telefono}"></td>
-                                    <td><a class="btn btn-primary" th:href="@{'/hospitales/mostrardoctores' + '?id=' + ${hosp.getIdHospital()}}">Mostrar Doctores</a></td>
-                                    <td><a class="btn btn-primary" th:href="@{'/hospitales/mostrarpacientes' + '?id=' + ${hosp.getIdHospital()}}">Mostrar Pacientes</a></td>
+                                    <td th:text="${emp.getFirst_name()}"></td>
+                                    <td th:text="${emp.getLast_name()}"></td>
+                                    <td th:text="${emp.getJob().getJob_title()}"></td>
+                                    <td th:text="${emp.getDepartamento().getDepartment_name()}"></td>
+                                    <td th:text="${emp.getJob().getJob_title()}"></td>
+
+                                    <td><a class="btn btn-primary" th:href="@{'/empleados/editarempleado' + '?id=' + ${emp.getIdEmpleado()}}">Editar</a></td>
+                                    <td><a class="btn btn-primary" th:href="@{'/empleados/borrarempleado' + '?id=' + ${emp.getIdEmpleado()}}">Borrar</a></td>
                                 </tr>
                             </tbody>
                         </table>
