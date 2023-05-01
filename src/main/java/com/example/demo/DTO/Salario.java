@@ -7,6 +7,6 @@ public interface Salario {
     String getPuesto();
     Integer getSalarioMax();
     Integer getSalarioMin();
-    Double getSalarioTotal();
-    Double getSalarioPromedio();
+    BigDecimal getSalarioTotal();
+    BigDecimal getSalarioPromedio();
 }

@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 public interface JobRepository extends JpaRepository<Job,Integer> {
 
-    @Query(value = "select j.job_title as Puesto , j.max_salary  as SueldoMaximo , j.min_salary as SueldoMinimo,  " +
-            " round(sum(e.salary),2) as SueldoTotal , round(avg(e.salary),2) as SueldoPromedio from jobs j "+
+    @Query(value = "select j.job_title as Puesto , j.max_salary  as SalarioMax , j.min_salary as SalarioMin,  " +
+            " round(sum(e.salary),2) as SalarioTotal , round(avg(e.salary),2) as SalarioPromedio from jobs j "+
             " inner join employees e on j.job_id = e.job_id "+
             " group by j.job_title ", nativeQuery = true)
     List<Salario> reporteSalarios();
