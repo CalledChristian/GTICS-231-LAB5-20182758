@@ -9,6 +9,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "jobs")
 public class Job {
+
     @Id
     @Column(name = "job_id", nullable = false)
     private String job_id;

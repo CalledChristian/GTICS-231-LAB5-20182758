@@ -3,8 +3,7 @@
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <link rel="icon" th:href="@{/img/icon.png}" type="image/x-icon" />
-        <title>Beta Clinica</title>
+        <title>Lista Empleados</title>
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
         <link rel="stylesheet" th:href="@{/css/fontawesome-all.min.css}">
     </head>
@@ -14,7 +13,6 @@
             <div>
                 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
                     <a class="navbar-brand" th:href="@{/}">
-                        <img th:src="@{/img/icon.png}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
                         Recursos Humanos - Travel Trip
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-app" aria-controls="navbar-app" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,14 +39,34 @@
             <div id="content">
                 <main>
 
-
-
                     <div class="page-header text-center">
-                        <h1>Lista de Empleados</h1>
+                        <h1>Lista de Empleados Totales</h1>
                     </div>
+
+                    <a class="btn btn-primary" th:href="@{'/empleados/nuevoempleado'}" role="button">Nuevo Empleado</a>
+                    <div class="container">
+                        <br>
+                        <div th:if="${msg !=null }" th:text="${msg}" class="alert alert-success" role="alert"></div>
+                        <br>
+                        <form method="post" th:action="@{/empleados/buscar}">
+                            <div class="row">
+                                <div class="col-8">
+                                    <input name="texto" class="form-control mb-3" type="text" placeholder="Texto a Buscar" aria-label="Search">
+                                </div>
+                                <div class="col-4">
+                                    <button type="submit" class="btn btn-outline-primary">Buscar</button>
+                                    <a class="btn btn-outline-danger" th:href="@{'/empleados'}">Limpiar</a>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--<div class="input-group">
+                            <input type="search" class="form-control rounded" placeholder="Texto a buscar" aria-label="Search" aria-describedby="search-addon" />
+                            <button type="button" class="btn btn-outline-primary">Buscar</button>
+                            <a type="button" class="btn btn-outline-danger" th:href="@{'/empleados'}">Limpiar</a>
+                        </div>-->
+
                     <div class="container-fluid">
-
-
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -57,7 +75,7 @@
                                     <th>Apellido</th>
                                     <th>Puesto</th>
                                     <th>Departamento</th>
-
+                                    <th>Ciudad</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,16 +85,14 @@
                                     <td th:text="${emp.getLast_name()}"></td>
                                     <td th:text="${emp.getJob().getJob_title()}"></td>
                                     <td th:text="${emp.getDepartamento().getDepartment_name()}"></td>
-                                    <td th:text="${emp.getJob().getJob_title()}"></td>
+                                    <td th:text="${emp.getDepartamento().getLocation().getCity()}"></td>
 
                                     <td><a class="btn btn-primary" th:href="@{'/empleados/editarempleado' + '?id=' + ${emp.getIdEmpleado()}}">Editar</a></td>
-                                    <td><a class="btn btn-primary" th:href="@{'/empleados/borrarempleado' + '?id=' + ${emp.getIdEmpleado()}}">Borrar</a></td>
+                                    <td><a class="btn btn-danger" th:href="@{'/empleados/borrarempleado' + '?id=' + ${emp.getIdEmpleado()}}">Borrar</a></td>
                                 </tr>
                             </tbody>
                         </table>
-
                     </div>
-                    /Contenido -->
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">

@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -41,17 +43,17 @@ public class Empleado {
     private Job job;
 
     @Column(name = "salary")
-    private Float salary;
+    private BigDecimal salary;
 
     @Column(name = "commission_pct")
-    private Float commission_pct;
+    private BigDecimal commission_pct;
 
     @ManyToOne
-    @JoinColumn(name = "manager_id", nullable = false)
+    @JoinColumn(name = "manager_id")
     private Empleado manager;
 
     @ManyToOne
-    @JoinColumn(name = "department_id", nullable = false)
+    @JoinColumn(name = "department_id")
     private Departamento departamento;
 
     @Column(name = "enabled")

@@ -16,21 +16,4 @@ public class InicioController {
         return "RecursosHumanos-TravelTrip";
     }
 
-    /*@GetMapping(value = "/registro")
-    public String registro() {
-
-        return "pages-register";
-    }
-
-    @GetMapping(value = "/olvidocontra")
-    public String olvidoContra() {
-
-        return "olvidocontra";
-    }
-
-    @GetMapping(value = "/formRegistro")
-    public String formRegistro() {
-
-        return "formularioregistro";
-    }*/
 }

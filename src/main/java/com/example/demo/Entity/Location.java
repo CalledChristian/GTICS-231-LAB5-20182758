@@ -14,7 +14,6 @@ public class Location {
 
 
     @Id
-
     @Column(name = "location_id", nullable = false)
     private Integer location_id;
 
@@ -31,5 +30,9 @@ public class Location {
 
     @Column(name = "state_province")
     private String state_province;
+
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    private Country country;
 
 }
