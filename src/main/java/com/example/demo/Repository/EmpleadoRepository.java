@@ -5,10 +5,12 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@Repository
 public interface EmpleadoRepository extends JpaRepository<Empleado,Integer> {
     @Query(value= "select * from employees where employee_id = ?1 ",nativeQuery = true)
     Empleado buscarEmpleadoPorId (Integer idEmpleado);
@@ -28,7 +30,5 @@ public interface EmpleadoRepository extends JpaRepository<Empleado,Integer> {
     List<Empleado> buscarEmpleados(String texto);
 
 
-    /*@Modifying
-    @Query(value = "delete from employees where employee_id =4", nativeQuery = true)
-    void  borrarEmpleado(Integer idEmpleado);*/
+
 }
